@@ -1,4 +1,6 @@
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const app = express();
 const path = require("path");
 app.use(express.json());
