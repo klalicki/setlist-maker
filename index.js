@@ -1,6 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
+mongoose
+  .connect(process.env.dbUrl)
+  .then(() => {
+    console.log("Successfully connected");
+  })
+  .catch((error) => {
+    console.log("Error: " + error);
+  });
 const app = express();
 const path = require("path");
 app.use(express.json());
