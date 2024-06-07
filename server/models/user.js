@@ -39,6 +39,7 @@ const updatePassword = async (id, password) => {
     { _id: id },
     { $set: { password: password } }
   );
+  return await User.findById(id);
 };
 // DELETE
 const deleteUser = async (id) => {
