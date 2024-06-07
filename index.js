@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const userRoutes = require("./server/routes/user");
+
 mongoose
   .connect(process.env.dbUrl)
   .then(() => {
@@ -23,6 +25,9 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
   next();
 });
+
+app.use("/user", userRoutes);
+
 app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public", "index.html"));
