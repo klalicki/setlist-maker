@@ -5,7 +5,7 @@ require("dotenv").config();
 const userRoutes = require("./server/routes/user");
 const albumRoutes = require("./server/routes/album");
 const songRoutes = require("./server/routes/song");
-
+const setlistRoutes = require("./server/routes/setlist");
 mongoose
   .connect(process.env.dbUrl)
   .then(() => {
@@ -28,9 +28,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/user", userRoutes);
-app.use("/album", albumRoutes);
-app.use("/song", songRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/album", albumRoutes);
+app.use("/api/song", songRoutes);
+app.use("/api/setlist", setlistRoutes);
 
 app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
