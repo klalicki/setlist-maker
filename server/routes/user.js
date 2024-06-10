@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
       req.body.password,
       req.body.email
     );
-    res.send({ ...newUser, password: undefined });
+    res.send({ ...newUser.toObject(), password: undefined });
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
