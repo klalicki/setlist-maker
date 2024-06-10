@@ -8,3 +8,26 @@ const setlistSchema = new mongoose.Schema({
   notes: String,
 });
 
+const Setlist = mongoose.model("Setlist", setlistSchema);
+
+const createSetlist = async (setlistInfo) => {
+  const newSetlist = await Setlist.create({ ...setlistInfo });
+  return newSetlist.toObject();
+};
+
+const getSetlist = async (setlistID) => {
+  const setlist = await Setlist.findById(setlistID);
+  return setlist.toObject();
+};
+
+const updateSetlist = async (setlistID, newSetlistInfo) => {
+  await Setlist.updateOne({ _id: setlistID }, { $set: { ...newSetlistInfo } });
+  const updatedSetlist = await Setlist.findById(setlistID);
+  return updatedSetlist;
+};
+
+const deleteSetlist = async (setlistID) => {
+  await Setlist.deleteOne({ _id: setlistID });
+};
+
+module.exports = { createSetlist, getSetlist, updateSetlist, deleteSetlist };

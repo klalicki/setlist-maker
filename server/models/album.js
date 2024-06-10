@@ -9,7 +9,6 @@ const albumSchema = new mongoose.Schema({
 const Album = mongoose.model("Album", albumSchema);
 
 const createAlbum = async (title, artist, year) => {
-  console.log({ title, artist, year });
   const newAlbum = await Album.create({
     title: title,
     artist: artist,
