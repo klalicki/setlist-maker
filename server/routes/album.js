@@ -3,16 +3,6 @@ const express = require("express");
 const Album = require("../models/album");
 const router = express.Router();
 
-// route boilerplate
-router.get("/url", async (req, res) => {
-  try {
-    // use the model
-  } catch (error) {
-    // send an error:
-    res.status(500).send({ message: error });
-  }
-});
-
 // create
 router.post("/new", async (req, res) => {
   try {
@@ -54,6 +44,7 @@ router.put("/update", async (req, res) => {
     res.status(401).send({ message: error });
   }
 });
+// delete
 router.delete("/delete", async (req, res) => {
   try {
     await Album.deleteAlbum(req.body.id);
