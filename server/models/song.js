@@ -9,14 +9,8 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model("Song", songSchema);
 
-const createSong = async (title, length, key, mood, performanceNotes) => {
-  const newSong = await Song.create({
-    title: title,
-    length: length,
-    key: key,
-    mood: mood,
-    performanceNotes: performanceNotes,
-  });
+const createSong = async (songData) => {
+  const newSong = await Song.create({ ...songData });
   return newSong.toObject();
 };
 
