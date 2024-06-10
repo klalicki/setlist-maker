@@ -23,6 +23,7 @@ const updateAlbum = async (albumID, updatedAlbum) => {
     { _id: albumID },
     { $set: { ...updatedAlbum } }
   );
+  return album.toObject();
 };
 const deleteAlbum = async (albumID) => {
   await Album.deleteOne({ _id: albumID });
