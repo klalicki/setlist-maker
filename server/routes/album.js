@@ -6,11 +6,12 @@ const router = express.Router();
 // create
 router.post("/new", async (req, res) => {
   try {
-    const newAlbum = await Album.createAlbum({
-      title: req.body.title,
-      artist: req.body.artist,
-      year: req.body.year,
-    });
+    console.log(typeof req.body);
+    const newAlbum = await Album.createAlbum(
+      req.body.title,
+      req.body.artist,
+      req.body.year
+    );
     res.send(newAlbum);
     // use the model
   } catch (error) {

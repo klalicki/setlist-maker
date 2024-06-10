@@ -9,7 +9,12 @@ const albumSchema = new mongoose.Schema({
 const Album = mongoose.model("Album", albumSchema);
 
 const createAlbum = async (title, artist, year) => {
-  const newAlbum = await Album.create({ title, artist, year });
+  console.log({ title, artist, year });
+  const newAlbum = await Album.create({
+    title: title,
+    artist: artist,
+    year: year,
+  });
   return newAlbum.toObject();
 };
 
@@ -18,13 +23,13 @@ const getAlbum = async (albumID) => {
   return album.toObject();
 };
 
-const updateAlbum = async (albumID, updatedAlbum) => {
-  const album = await Album.updateOne(
-    { _id: albumID },
-    { $set: { ...updatedAlbum } }
-  );
-  return album.toObject();
+const updateAlbum = async (albumID, newAlbumInfo) => {
+  await Album.updateOne({ _id: albumID }, { $set: { ...newAlbumInfo } });
+  const updatedAlbum = await Album.findById(albumID);
+
+  return updatedAlbum;
 };
+
 const deleteAlbum = async (albumID) => {
   await Album.deleteOne({ _id: albumID });
 };
