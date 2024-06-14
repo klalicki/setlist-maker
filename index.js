@@ -33,7 +33,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/album", albumRoutes);
 app.use("/api/song", songRoutes);
 app.use("/api/setlist", setlistRoutes);
-app.use("api/performance", performanceRoutes);
+app.use("/api/performance", performanceRoutes);
 
 app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
