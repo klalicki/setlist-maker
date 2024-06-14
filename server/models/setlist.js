@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const setlistSchema = new mongoose.Schema({
   title: String,
-  songs: [String],
+  songs: [{ type: mongoose.Schema.ObjectId, ref: "Song", required: true }],
   date: Date,
   published: Boolean,
   notes: String,
