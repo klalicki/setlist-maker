@@ -3,7 +3,7 @@ const albumSchema = new mongoose.Schema({
   title: String,
   artist: String,
   year: Number,
-  songs: [String],
+  songs: [{ type: mongoose.Schema.ObjectId, ref: "Song", required: true }],
 });
 
 const Album = mongoose.model("Album", albumSchema);

@@ -3,8 +3,10 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   email: String,
-  albums: [String],
-  setlists: [String],
+  albums: [{ type: mongoose.Schema.ObjectId, ref: "Setlist", required: true }],
+  setlists: [
+    { type: mongoose.Schema.ObjectId, ref: "Setlist", required: true },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);
