@@ -6,6 +6,7 @@ const userRoutes = require("./server/routes/user");
 const albumRoutes = require("./server/routes/album");
 const songRoutes = require("./server/routes/song");
 const setlistRoutes = require("./server/routes/setlist");
+const performanceRoutes = require("./server/routes/performance");
 mongoose
   .connect(process.env.dbUrl)
   .then(() => {
@@ -32,6 +33,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/album", albumRoutes);
 app.use("/api/song", songRoutes);
 app.use("/api/setlist", setlistRoutes);
+app.use("api/performance", performanceRoutes);
 
 app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
