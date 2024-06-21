@@ -3,7 +3,7 @@ const Performance = require("../models/performance");
 const router = express.Router();
 
 // create
-router.post("/new", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newPerformance = await Performance.createPerformance(
       req.body.userID,
@@ -17,11 +17,11 @@ router.post("/new", async (req, res) => {
   }
 });
 // retrieve
-router.get("/get", async (req, res) => {
+router.get("/:performanceID", async (req, res) => {
   try {
     // use the model
     const performance = await Performance.getPerformance(
-      req.body.performanceID
+      req.params.performanceID
     );
 
     res.send(performance);
@@ -32,11 +32,11 @@ router.get("/get", async (req, res) => {
 });
 
 // update
-router.put("/update", async (req, res) => {
+router.put("/:performanceID", async (req, res) => {
   try {
     // use the model
     const updatedPerformance = await Performance.updatePerformanceData(
-      req.body.performanceID,
+      req.params.performanceID,
       req.body.performanceData
     );
     res.send(updatedPerformance);
@@ -46,9 +46,9 @@ router.put("/update", async (req, res) => {
   }
 });
 // delete
-router.delete("/delete", async (req, res) => {
+router.delete("/:performanceID", async (req, res) => {
   try {
-    await Performance.deletePerformance(req.body.performanceID);
+    await Performance.deletePerformance(req.params.performanceID);
     res.status(200).send({ message: "deleted successfully" });
     // use the model
   } catch (error) {
