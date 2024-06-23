@@ -3,7 +3,7 @@ const Setlist = require("../models/setlist");
 const router = express.Router();
 
 // create
-router.post("/new", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     console.log(typeof req.body);
     const newSetlist = await Setlist.createSetlist(req.body);
@@ -15,10 +15,10 @@ router.post("/new", async (req, res) => {
   }
 });
 // retrieve
-router.get("/get", async (req, res) => {
+router.get("/:setlistID", async (req, res) => {
   try {
     // use the model
-    const Setlist = await Setlist.getSetlist(req.body.id);
+    const Setlist = await Setlist.getSetlist(req.params.setlistID);
     res.send(Setlist);
   } catch (error) {
     // send an error:
@@ -27,11 +27,11 @@ router.get("/get", async (req, res) => {
 });
 
 // update
-router.put("/update", async (req, res) => {
+router.put("/:setlistID", async (req, res) => {
   try {
     // use the model
     const updatedSetlist = await Setlist.updateSetlist(
-      req.body.id,
+      req.params.setlistID,
       req.body.updatedSetlist
     );
     res.send(updatedSetlist);
@@ -41,9 +41,9 @@ router.put("/update", async (req, res) => {
   }
 });
 // delete
-router.delete("/delete", async (req, res) => {
+router.delete("/:setlistID", async (req, res) => {
   try {
-    await Setlist.deleteSetlist(req.body.id);
+    await Setlist.deleteSetlist(req.params.setlistID);
     res.status(200).send({ message: "deleted successfully" });
     // use the model
   } catch (error) {

@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 const router = express.Router();
 
-router.post("/login", async (req, res) => {
+router.get("/login", async (req, res) => {
   try {
     const user = await User.login(req.body.username, req.body.password);
     res.send({ ...user, password: undefined });
@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newUser = await User.register(
       req.body.username,
@@ -26,19 +26,22 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.put("/update", async (req, res) => {
+router.put("/:userID", async (req, res) => {
   try {
-    const user = await User.updatePassword(req.body.id, req.body.password);
-    
+    const user = await User.updatePassword(
+      req.params.userID,
+      req.body.password
+    );
+
     res.send({ ...user, password: undefined });
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
 });
 
-router.delete("/delete", async (req, res) => {
+router.delete("/:userID", async (req, res) => {
   try {
-    const user = await User.deleteUser(req.body.id);
+    const user = await User.deleteUser(req.params.userID);
     // res.send({ ...user, password: undefined });
   } catch (error) {
     res.status(401).send({ message: error.message });

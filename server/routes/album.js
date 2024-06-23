@@ -4,7 +4,7 @@ const Album = require("../models/album");
 const router = express.Router();
 
 // create
-router.post("/new", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     console.log(typeof req.body);
     const newAlbum = await Album.createAlbum(
@@ -20,10 +20,10 @@ router.post("/new", async (req, res) => {
   }
 });
 // retrieve
-router.get("/get", async (req, res) => {
+router.get("/:albumID", async (req, res) => {
   try {
     // use the model
-    const album = await Album.getAlbum(req.body.id);
+    const album = await Album.getAlbum(req.params.albumID);
     res.send(album);
   } catch (error) {
     // send an error:
@@ -32,11 +32,11 @@ router.get("/get", async (req, res) => {
 });
 
 // update
-router.put("/update", async (req, res) => {
+router.put("/:albumID", async (req, res) => {
   try {
     // use the model
     const updatedAlbum = await Album.updateAlbum(
-      req.body.id,
+      req.params.albumID,
       req.body.updatedAlbum
     );
     res.send(updatedAlbum);
@@ -46,9 +46,9 @@ router.put("/update", async (req, res) => {
   }
 });
 // delete
-router.delete("/delete", async (req, res) => {
+router.delete("/:albumID", async (req, res) => {
   try {
-    await Album.deleteAlbum(req.body.id);
+    await Album.deleteAlbum(req.params.albumID);
     res.status(200).send({ message: "deleted successfully" });
     // use the model
   } catch (error) {
