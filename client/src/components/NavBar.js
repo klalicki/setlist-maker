@@ -1,6 +1,6 @@
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-sm ">
+    <nav class="navbar navbar-expand-sm border-bottom border-primary border-2 shadow-sm">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           Setlist Maker
