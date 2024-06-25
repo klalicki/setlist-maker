@@ -3,15 +3,10 @@ const LoginForm = () => {
     <form className="p-3 col col-sm-6 col-md-4 border border-primary border-2">
       <h2>Login</h2>
       <div className="mb-3">
-        <label htmlFor="login-email" className="form-label">
-          email address:
+        <label htmlFor="login-username" className="form-label">
+          username:
         </label>
-        <input
-          type="email"
-          name="email"
-          className="form-control"
-          id="login-email"
-        />
+        <input name="username" className="form-control" id="login-username" />
       </div>{" "}
       <div className="mb-3">
         <label htmlFor="login-password" className="form-label">
@@ -25,7 +20,7 @@ const LoginForm = () => {
         />
       </div>
       <button type="submit" class="btn btn-primary">
-        Submit
+        Login
       </button>
     </form>
   );
