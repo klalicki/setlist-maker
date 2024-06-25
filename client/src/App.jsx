@@ -6,7 +6,7 @@ function App() {
     <div className="app">
       <NavBar />
       <div className="container">
-        <div className="row gx-3 pt-3">
+        <div className="row gx-3 gy-3 pt-3">
           <div className="col col-12 col-md-4">
             <LoginForm />
           </div>
