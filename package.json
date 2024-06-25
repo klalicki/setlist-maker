@@ -4,8 +4,8 @@
   "description": "This README file will be updated as I work on the project.",
   "main": "index.js",
   "scripts": {
-    "server":"nodemon index.js",
-    "client":"npm start --prefix client",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \""
   },
   "author": "",
@@ -15,9 +15,9 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongodb": "^6.7.0",
-    "mongoose": "^8.4.1"
+    "mongoose": "^8.4.1",
+    "sass": "^1.77.6"
   },
-
   "devDependencies": {
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.2"

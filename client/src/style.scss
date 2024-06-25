@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+// overriding bootstrap colors and stuff:
+
+$secondary: #6c57ff;
+$primary: #fb353b;
+
+$body-bg: #e8f3f9;
+
+// bootstrap import
+@import "bootstrap/scss/bootstrap";
+
 .app {
   display: flex;
   flex-direction: column;
