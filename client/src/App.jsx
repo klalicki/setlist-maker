@@ -4,7 +4,11 @@ function App() {
   return (
     <div className="app">
       <NavBar />
-      <LoginForm />
+      <div className="container">
+        <div className="row">
+          <LoginForm />
+        </div>
+      </div>
     </div>
   );
 }
