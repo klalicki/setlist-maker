@@ -6,10 +6,20 @@ const NavBar = () => {
           Setlist Maker
         </a>
 
-        <ul class="navbar-nav ">
-          <li class="nav-item">
-            <a class="nav-link active" href="/login">
+        <ul class="navbar-nav d-flex flex-row">
+          <li class="nav-item px-2">
+            <a class="nav-link " href="/login">
               Login
+            </a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link " href="/register">
+              Register
+            </a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link " href="/profile">
+              Profile
             </a>
           </li>
         </ul>
