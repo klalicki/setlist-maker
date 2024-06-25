@@ -2,10 +2,12 @@
 
 // overriding bootstrap colors and stuff:
 
-$secondary: #6c57ff;
-$primary: #fb353b;
+$primary: #6c57ff;
+$secondary: #fb353b;
 
-$body-bg: #e8f3f9;
+// $body-bg: #e8f3f9;
+
+$font-family-sans-serif: "Work Sans", sans-serif;
 
 // bootstrap import
 @import "bootstrap/scss/bootstrap";
@@ -13,8 +15,4 @@ $body-bg: #e8f3f9;
 .app {
   display: flex;
   flex-direction: column;
-}
-
-:root {
-  --bs-font-sans-serif: "Work Sans", sans-serif;
 }
