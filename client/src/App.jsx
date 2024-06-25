@@ -6,9 +6,13 @@ function App() {
     <div className="app">
       <NavBar />
       <div className="container">
-        <div className="row">
-          <LoginForm />
-          <RegisterForm />
+        <div className="row gx-3 pt-3">
+          <div className="col col-12 col-md-4">
+            <LoginForm />
+          </div>
+          <div className="col col-12 col-md-4">
+            <RegisterForm />
+          </div>
         </div>
       </div>
     </div>

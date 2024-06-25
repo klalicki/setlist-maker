@@ -1,6 +1,6 @@
 const LoginForm = () => {
   return (
-    <form className="p-3 col col-sm-6 col-md-4 border border-primary border-2">
+    <form className="p-3  border border-primary border-2">
       <h2>Login</h2>
       <div className="mb-3">
         <label htmlFor="login-username" className="form-label">
