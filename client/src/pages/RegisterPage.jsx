@@ -1,4 +1,4 @@
-const RegisterForm = () => {
+const RegisterPage = () => {
   return (
     <form className="p-3 border border-primary border-2">
       <h2>Register</h2>
@@ -41,4 +41,4 @@ const RegisterForm = () => {
     </form>
   );
 };
-export default RegisterForm;
+export default RegisterPage;

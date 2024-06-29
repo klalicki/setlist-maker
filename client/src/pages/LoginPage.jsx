@@ -1,4 +1,4 @@
-const LoginForm = () => {
+const LoginPage = () => {
   return (
     <form className="p-3  border border-primary border-2">
       <h2>Login</h2>
@@ -25,4 +25,4 @@ const LoginForm = () => {
     </form>
   );
 };
-export default LoginForm;
+export default LoginPage;
