@@ -1,9 +1,35 @@
+import { fetchData } from "../apiHelpers";
+import { useState } from "react";
+
 const RegisterPage = () => {
-  const submitHandler = (e) => {
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const clearMessages = () => {
+    setErrorMsg("");
+    setSuccessMsg("");
+  };
+  const submitHandler = async (e) => {
     e.preventDefault();
+    clearMessages();
     const fd = new FormData(e.target);
     const formData = Object.fromEntries([...fd.entries()]);
     console.log(formData);
+    try {
+      const result = await fetchData(
+        "api/user/",
+        {
+          username: formData.username,
+          password: formData.password,
+          email: formData.email,
+        },
+        "post"
+      );
+      console.log(result);
+    } catch (error) {
+      setErrorMsg(error.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -17,6 +43,7 @@ const RegisterPage = () => {
           email address:
         </label>
         <input
+          required
           type="email"
           name="email"
           className="form-control"
@@ -28,6 +55,7 @@ const RegisterPage = () => {
           username:
         </label>
         <input
+          required
           type="text"
           name="username"
           className="form-control"
@@ -39,12 +67,15 @@ const RegisterPage = () => {
           password:
         </label>
         <input
+          required
           type="password"
           name="password"
           className="form-control"
           id="register-password"
         />
       </div>
+      {errorMsg ?? <div>{errorMsg}</div>}
+      {successMsg ?? <div>{successMsg}</div>}
       <button type="submit" class="btn btn-primary">
         Register
       </button>
