@@ -74,8 +74,8 @@ const RegisterPage = () => {
           id="register-password"
         />
       </div>
-      {errorMsg ?? <div>{errorMsg}</div>}
-      {successMsg ?? <div>{successMsg}</div>}
+      {errorMsg && <div className="alert alert-danger">{errorMsg}</div>}
+      {successMsg && <div className="alert alert-success">{successMsg}</div>}
       <button type="submit" class="btn btn-primary">
         Register
       </button>
