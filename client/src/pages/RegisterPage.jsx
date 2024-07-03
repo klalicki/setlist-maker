@@ -25,6 +25,7 @@ const RegisterPage = () => {
         },
         "post"
       );
+      setSuccessMsg("Successfully registered!");
       console.log(result);
     } catch (error) {
       setErrorMsg(error.message);
