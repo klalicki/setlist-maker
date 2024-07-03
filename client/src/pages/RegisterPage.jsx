@@ -1,6 +1,16 @@
 const RegisterPage = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const formData = Object.fromEntries([...fd.entries()]);
+    console.log(formData);
+  };
+
   return (
-    <form className="p-3 border border-primary border-2">
+    <form
+      className="p-3 border border-primary border-2"
+      onSubmit={submitHandler}
+    >
       <h2>Register</h2>
       <div className="mb-3">
         <label htmlFor="register-email" className="form-label">
