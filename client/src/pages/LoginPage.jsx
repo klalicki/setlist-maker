@@ -10,12 +10,20 @@ const LoginPage = () => {
     setErrorMsg("");
     setSuccessMsg("");
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     clearMessages();
     const fd = new FormData(e.target);
     const formData = Object.fromEntries([...fd.entries()]);
     //  try logging in
+
+    try {
+      await login(formData.username, formData.password);
+      setSuccessMsg("Successfully Logged In");
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
   };
 
   return (
