@@ -4,10 +4,10 @@ const User = require("../models/user");
 
 const router = express.Router();
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const user = await User.login(req.body.username, req.body.password);
-    res.send({ ...user, password: undefined });
+    res.send({ ...user.toObject(), password: undefined });
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
@@ -33,7 +33,7 @@ router.put("/:userID", async (req, res) => {
       req.body.password
     );
 
-    res.send({ ...user, password: undefined });
+    res.send({ ...user.toObject(), password: undefined });
   } catch (error) {
     res.status(401).send({ message: error.message });
   }

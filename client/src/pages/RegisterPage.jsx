@@ -1,9 +1,11 @@
 import { fetchData } from "../apiHelpers";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 const RegisterPage = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const { login } = useContext(UserContext);
 
   const clearMessages = () => {
     setErrorMsg("");
@@ -17,7 +19,7 @@ const RegisterPage = () => {
     console.log(formData);
     try {
       const result = await fetchData(
-        "api/user/",
+        "user/",
         {
           username: formData.username,
           password: formData.password,
@@ -26,6 +28,7 @@ const RegisterPage = () => {
         "post"
       );
       setSuccessMsg("Successfully registered!");
+      login(formData.username, formData.password);
       console.log(result);
     } catch (error) {
       setErrorMsg(error.message);

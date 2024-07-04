@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import { UserContextProvider } from "./context/userContext";
+import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
