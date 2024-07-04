@@ -5,15 +5,28 @@ const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
-  const isAuthenticated = userInfo ? true : false;
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async (username, password) => {
-    const user = await fetchData("user/login", { username, password }, "post");
-    console.log("ran login function with username" + username);
-    console.log(user);
+    try {
+      const user = await fetchData(
+        "user/login",
+        { username, password },
+        "post"
+      );
+      setUserInfo(user);
+      console.log("ran login function with username" + username);
+      console.log(user);
+      setIsAuthenticated(true);
+    } catch (error) {
+      throw error;
+    }
   };
 
-  const logout = () => {};
+  const logout = () => {
+    setIsAuthenticated(false);
+    setUserInfo({});
+  };
 
   return (
     <UserContext.Provider value={{ userInfo, isAuthenticated, login, logout }}>

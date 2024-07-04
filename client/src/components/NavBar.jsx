@@ -2,7 +2,7 @@ import { UserContext } from "../context/UserContext";
 import { useContext, useState } from "react";
 
 const NavBar = () => {
-  const { isAuthenticated } = useContext(UserContext);
+  const { isAuthenticated, logout } = useContext(UserContext);
 
   return (
     <nav class="navbar navbar-expand-sm border-bottom border-primary border-2 shadow-sm">
@@ -27,6 +27,13 @@ const NavBar = () => {
               Profile
             </a>
           </li>
+          <button
+            onClick={() => {
+              logout();
+            }}
+          >
+            logout
+          </button>
         </ul>
       </div>
     </nav>
