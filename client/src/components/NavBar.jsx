@@ -12,28 +12,36 @@ const NavBar = () => {
         </a>
         {isAuthenticated ? "Authenticated!!" : "Not Authenticated"}
         <ul class="navbar-nav d-flex flex-row">
-          <li class="nav-item px-2">
-            <a class="nav-link " href="/login">
-              Login
-            </a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link " href="/register">
-              Register
-            </a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link " href="/profile">
-              Profile
-            </a>
-          </li>
-          <button
-            onClick={() => {
-              logout();
-            }}
-          >
-            logout
-          </button>
+          {!isAuthenticated && (
+            <>
+              <li class="nav-item px-2">
+                <a class="nav-link " href="/login">
+                  Login
+                </a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link " href="/register">
+                  Register
+                </a>
+              </li>
+            </>
+          )}
+
+          {isAuthenticated && (
+            <li class="nav-item px-2">
+              <a class="nav-link " href="/profile">
+                Profile
+              </a>
+            </li>
+          )}
+          {isAuthenticated && (
+            <button
+              onClick={() => {
+                logout();
+              }}
+            >
+              logout
+            </button>)}
         </ul>
       </div>
     </nav>
