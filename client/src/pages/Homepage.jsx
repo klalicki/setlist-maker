@@ -1,4 +1,5 @@
-import RegisterPage from "./RegisterPage";
+import LoginPage from "./LoginPage";
+import { Link } from "react-router-dom";
 const Homepage = () => {
   return (
     <>
@@ -12,7 +13,8 @@ const Homepage = () => {
             </p>
           </div>
           <div className="col col-md-4">
-            <RegisterPage />
+            <LoginPage />
+            Not a user yet? Sign up <Link to="/register">here</Link>
           </div>
         </div>
       </div>
