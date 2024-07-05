@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { useContext, useState } from "react";
 
-const LoginPage = () => {
+const LoginForm = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { login } = useContext(UserContext);
@@ -30,7 +30,7 @@ const LoginPage = () => {
 
   return (
     <form
-      className="p-3  border border-primary border-2"
+      className=""
       onSubmit={handleSubmit}
     >
       <h2>Login</h2>
@@ -59,4 +59,4 @@ const LoginPage = () => {
     </form>
   );
 };
-export default LoginPage;
+export default LoginForm;

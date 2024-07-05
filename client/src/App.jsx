@@ -1,5 +1,5 @@
 import NavBar from "./components/NavBar";
-import LoginPage from "./pages/LoginPage";
+import LoginForm from "./forms/LoginForm";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import AuthSwitcher from "./components/AuthSwitcher";
@@ -23,7 +23,7 @@ function App() {
                 />
               }
             />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<RegisterPage />} />{" "}
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>

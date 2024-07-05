@@ -1,4 +1,4 @@
-import LoginPage from "./LoginPage";
+import LoginForm from "../forms/LoginForm";
 import { Link } from "react-router-dom";
 const Homepage = () => {
   return (
@@ -12,9 +12,11 @@ const Homepage = () => {
               live performances.
             </p>
           </div>
-          <div className="col col-md-4">
-            <LoginPage />
-            Not a user yet? Sign up <Link to="/register">here</Link>
+          <div className="col col-md-4 p-3 gap-2 border border-primary border-2 d-flex flex-column">
+            <LoginForm />
+            <p className="mb-0">
+              Not a user yet? Sign up <Link to="/register">here.</Link>
+            </p>
           </div>
         </div>
       </div>

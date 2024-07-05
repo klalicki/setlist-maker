@@ -16,7 +16,7 @@ const NavBar = () => {
           {!isAuthenticated && (
             <>
               <li class="nav-item px-2">
-                <Link class="nav-link " to="/login">
+                <Link class="nav-link " to="/">
                   Login
                 </Link>
               </li>
