@@ -1,5 +1,6 @@
 import { UserContext } from "../context/UserContext";
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { isAuthenticated, logout } = useContext(UserContext);
@@ -7,31 +8,31 @@ const NavBar = () => {
   return (
     <nav class="navbar navbar-expand-sm border-bottom border-primary border-2 shadow-sm">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <Link class="navbar-brand" to="/">
           Setlist Maker
-        </a>
+        </Link>
         {isAuthenticated ? "Authenticated!!" : "Not Authenticated"}
         <ul class="navbar-nav d-flex flex-row">
           {!isAuthenticated && (
             <>
               <li class="nav-item px-2">
-                <a class="nav-link " href="/login">
+                <Link class="nav-link " to="/login">
                   Login
-                </a>
+                </Link>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link " href="/register">
+                <Link class="nav-link " to="/register">
                   Register
-                </a>
+                </Link>
               </li>
             </>
           )}
 
           {isAuthenticated && (
             <li class="nav-item px-2">
-              <a class="nav-link " href="/profile">
+              <Link class="nav-link " to="/profile">
                 Profile
-              </a>
+              </Link>
             </li>
           )}
           {isAuthenticated && (
@@ -41,7 +42,8 @@ const NavBar = () => {
               }}
             >
               logout
-            </button>)}
+            </button>
+          )}
         </ul>
       </div>
     </nav>

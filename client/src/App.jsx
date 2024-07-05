@@ -8,8 +8,8 @@ function App() {
   return (
     <UserContextProvider>
       <div className="app">
-        <NavBar />
         <BrowserRouter>
+          <NavBar />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />{" "}
