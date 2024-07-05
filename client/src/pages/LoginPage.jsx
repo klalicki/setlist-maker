@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { useContext, useState } from "react";
 
@@ -5,6 +6,7 @@ const LoginPage = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { login } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const clearMessages = () => {
     setErrorMsg("");
@@ -20,7 +22,7 @@ const LoginPage = () => {
 
     try {
       await login(formData.username, formData.password);
-      setSuccessMsg("Successfully Logged In");
+      navigate("/");
     } catch (error) {
       setErrorMsg(error.message);
     }
