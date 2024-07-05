@@ -11,7 +11,7 @@ const NavBar = () => {
         <Link class="navbar-brand" to="/">
           Setlist Maker
         </Link>
-        {isAuthenticated ? "Authenticated!!" : "Not Authenticated"}
+        {/* {isAuthenticated ? "Authenticated!!" : "Not Authenticated"} */}
         <ul class="navbar-nav d-flex flex-row">
           {!isAuthenticated && (
             <>
