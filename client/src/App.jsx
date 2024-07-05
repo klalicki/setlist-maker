@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import Homepage from "./pages/Homepage";
 import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
+            <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />{" "}
             <Route path="/profile" element={<ProfilePage />} />
