@@ -6,7 +6,7 @@ const ProfilePage = () => {
   return (
     <div className="container">
       <div className="row justify-content-center py-3">
-        <div className="col col-12 col-sm-6 col-md-4">
+        <div className="col col-12 col-sm-6 col-md-4 bg-white rounded p-3 bg-opacity-75 shadow">
           <h1>Profile</h1>
           <p className="lead">Hi there, {userInfo.username}! </p>
           <p>
