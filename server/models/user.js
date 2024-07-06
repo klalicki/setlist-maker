@@ -40,10 +40,18 @@ const login = async (username, password) => {
   return user;
 };
 // UPDATE
-const updatePassword = async (id, password,oldPassword) => {
-  const user = await User.updateOne(
+const updatePassword = async (id, password, oldPassword) => {
+  const user = await User.findById(id);
+  const isCorrectPassword = await bcrypt.compare(oldPassword, user.password);
+  if (!isCorrectPassword) {
+    throw "old password is incorrect!"
+  }
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const updatedUser = await User.updateOne(
     { _id: id },
-    { $set: { password: password } }
+    { $set: { password: hashedPassword } }
   );
   return await User.findById(id);
 };

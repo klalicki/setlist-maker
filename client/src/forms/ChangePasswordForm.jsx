@@ -10,8 +10,14 @@ const ChangePasswordForm = () => {
   const [newPassword2, setNewPassword2] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+  const clearMessages = () => {
+    setErrorMsg("");
+    setSuccessMsg("");
+  };
 
   useEffect(() => {
+    clearMessages();
     setErrorMsg(
       newPassword === newPassword2
         ? ""
@@ -21,6 +27,8 @@ const ChangePasswordForm = () => {
 
   const submitPasswordChange = async (e) => {
     e.preventDefault();
+    clearMessages();
+
     // make sure the two passwords match!
     if (newPassword !== newPassword2) {
       setErrorMsg("Error: new password and confirmation must match!");
@@ -29,10 +37,14 @@ const ChangePasswordForm = () => {
       try {
         const response = await fetchData(
           `user/${userID}`,
-          { userID: userID, password: newPassword },
+          { password: newPassword, oldPassword: oldPassword },
           "put"
         );
-      } catch (error) {}
+        setSuccessMsg("Successfully updated password!");
+      } catch (error) {
+        console.log(error);
+        setErrorMsg(error.message);
+      }
     }
   };
 
@@ -84,7 +96,8 @@ const ChangePasswordForm = () => {
         />
       </div>
       {errorMsg && <div className="alert alert-danger">{errorMsg}</div>}
-      <button type="submit" disabled={errorMsg}>
+      {successMsg && <div className="alert alert-success">{successMsg}</div>}
+      <button type="submit" disabled={errorMsg} className="btn btn-primary">
         Submit
       </button>
     </form>

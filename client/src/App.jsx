@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import AppHomepage from "./pages/AppHomepage";
 import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivateRoutes from "./components/PrivateRoutes";
 function App() {
   return (
     <UserContextProvider>
@@ -24,8 +25,10 @@ function App() {
               }
             />
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterPage />} />{" "}
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/profile" element={<ProfilePage />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </div>

@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:userID", async (req, res) => {
+  console.log("received password change endpoint");
   try {
     const user = await User.updatePassword(
       req.params.userID,
@@ -36,7 +37,7 @@ router.put("/:userID", async (req, res) => {
 
     res.send({ ...user.toObject(), password: undefined });
   } catch (error) {
-    res.status(401).send({ message: error.message });
+    res.status(401).send({ message: error.message || error });
   }
 });
 

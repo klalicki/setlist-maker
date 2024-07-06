@@ -37,6 +37,7 @@ const NavBar = () => {
           )}
           {isAuthenticated && (
             <button
+              className="btn btn-outline-primary"
               onClick={() => {
                 logout();
               }}
