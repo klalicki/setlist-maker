@@ -5,7 +5,6 @@
 $primary: #6c57ff;
 $secondary: #fb353b;
 
-
 $font-family-sans-serif: "Work Sans", sans-serif;
 
 // bootstrap import
@@ -14,8 +13,13 @@ $font-family-sans-serif: "Work Sans", sans-serif;
 .app {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
-
+html,
+body,
+#root {
+  height: 100%;
+}
 .max-width-400 {
   max-width: 400px;
 }

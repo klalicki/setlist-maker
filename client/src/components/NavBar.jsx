@@ -6,7 +6,7 @@ const NavBar = () => {
   const { isAuthenticated, logout } = useContext(UserContext);
 
   return (
-    <nav class="navbar navbar-expand-sm border-bottom border-primary border-2 shadow-sm">
+    <nav class="navbar navbar-expand-sm  shadow-sm bg-white bg-opacity-90">
       <div class="container-fluid">
         <Link class="navbar-brand" to="/">
           Setlist Maker

@@ -11,7 +11,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 function App() {
   return (
     <UserContextProvider>
-      <div className="app">
+      <div className="app bg-primary bg-gradient">
         <BrowserRouter>
           <NavBar />
           <Routes>
