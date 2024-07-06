@@ -6,6 +6,7 @@
   "scripts": {
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
+    "build": "chmod +x build.sh && ./build.sh",
     "dev": "concurrently \"npm run server\" \"npm run client \""
   },
   "author": "",
