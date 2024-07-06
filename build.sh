@@ -2,12 +2,12 @@
 
 echo "Installing server dependencies"
 
-npm install --omit=dev
+npm install 
 
 echo "Installing client dependencies"
 
 pushd client
-npm install --omit=dev --legacy-peer-deps
+npm install 
 npm run build
 popd
 
