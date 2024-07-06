@@ -2,6 +2,7 @@ import { UserContext } from "../context/UserContext";
 import { fetchData } from "../apiHelpers";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SetlistList = () => {
   const navigate = useNavigate();
@@ -30,7 +31,11 @@ const SetlistList = () => {
   return (
     <div>
       {listItems.map((item) => {
-        return <div>{JSON.stringify(item)}</div>;
+        return (
+          <div>
+            <Link to={`/setlist/${item._id}`}>{item.title || "Untitled"}</Link>
+          </div>
+        );
       })}
       <button className="btn btn-primary" onClick={createSetlist}>
         Create Setlist
