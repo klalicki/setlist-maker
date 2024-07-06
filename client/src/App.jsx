@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar";
 import LoginForm from "./forms/LoginForm";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import SetlistEditor from "./pages/SetlistEditor";
 import AuthSwitcher from "./components/AuthSwitcher";
 import Homepage from "./pages/Homepage";
 import AppHomepage from "./pages/AppHomepage";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route element={<PrivateRoutes />}>
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/setlist/:setlistID" element={<SetlistEditor />} />
             </Route>
           </Routes>
         </BrowserRouter>

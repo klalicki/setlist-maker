@@ -11,7 +11,15 @@ const setlistSchema = new mongoose.Schema({
 const Setlist = mongoose.model("Setlist", setlistSchema);
 
 const createSetlist = async (setlistInfo) => {
-  const newSetlist = await Setlist.create({ ...setlistInfo });
+  const newSetlist = await Setlist.create({
+    title: "Untitled Setlist",
+    author: "",
+    songs: [],
+    date: new Date(),
+    published: false,
+    notes: "",
+    ...setlistInfo,
+  });
   return newSetlist.toObject();
 };
 
