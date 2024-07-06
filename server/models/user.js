@@ -40,7 +40,7 @@ const login = async (username, password) => {
   return user;
 };
 // UPDATE
-const updatePassword = async (id, password) => {
+const updatePassword = async (id, password,oldPassword) => {
   const user = await User.updateOne(
     { _id: id },
     { $set: { password: password } }

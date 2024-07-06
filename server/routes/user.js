@@ -30,7 +30,8 @@ router.put("/:userID", async (req, res) => {
   try {
     const user = await User.updatePassword(
       req.params.userID,
-      req.body.password
+      req.body.password,
+      req.body.oldPassword
     );
 
     res.send({ ...user.toObject(), password: undefined });

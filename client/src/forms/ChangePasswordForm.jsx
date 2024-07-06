@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { fetchData } from "../apiHelpers";
 
 const ChangePasswordForm = () => {
+  const { userInfo } = useContext(UserContext);
+  const userID = userInfo._id;
   const [newPassword, setNewPassword] = useState("");
   const [newPassword2, setNewPassword2] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const doPasswordsMatch = newPassword === newPassword2;
     setErrorMsg(
       newPassword === newPassword2
         ? ""
@@ -14,14 +19,22 @@ const ChangePasswordForm = () => {
     );
   }, [newPassword, newPassword2]);
 
-  const handlePasswordChange = (e) => {
-    setNewPassword(e.target.value);
+  const submitPasswordChange = async (e) => {
+    e.preventDefault();
+    // make sure the two passwords match!
+    if (newPassword !== newPassword2) {
+      setErrorMsg("Error: new password and confirmation must match!");
+    } else {
+      // submit password change to API
+      try {
+        const response = await fetchData(
+          `user/${userID}`,
+          { userID: userID, password: newPassword },
+          "put"
+        );
+      } catch (error) {}
+    }
   };
-  const handlePassword2Change = (e) => {
-    setNewPassword2(e.target.value);
-  };
-
-  const submitPasswordChange = (e) => {};
 
   return (
     <form onSubmit={submitPasswordChange}>
@@ -35,6 +48,9 @@ const ChangePasswordForm = () => {
           name="password"
           className="form-control"
           id="current-password"
+          onChange={(e) => {
+            setOldPassword(e.target.value);
+          }}
         />
       </div>
       <div className="mb-3">
@@ -47,7 +63,9 @@ const ChangePasswordForm = () => {
           name="new-password-2"
           className="form-control"
           id="new-password"
-          onChange={handlePasswordChange}
+          onChange={(e) => {
+            setNewPassword(e.target.value);
+          }}
         />
       </div>
       <div className="mb-3">
@@ -60,7 +78,9 @@ const ChangePasswordForm = () => {
           name="new-password-2"
           className="form-control"
           id="new-password-2"
-          onChange={handlePassword2Change}
+          onChange={(e) => {
+            setNewPassword2(e.target.value);
+          }}
         />
       </div>
       {errorMsg && <div className="alert alert-danger">{errorMsg}</div>}
