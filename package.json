@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "server:prod":"node index.js",
+    "server:prod": "node index.js",
     "client": "npm start --prefix client",
     "build": "chmod +x build.sh && ./build.sh",
     "dev": "concurrently \"npm run server\" \"npm run client \""
@@ -18,7 +18,7 @@
     "express": "^4.19.2",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1",
-    "sass": "^1.77.6",
+    "sass": "^1.77.6"
    
   },
   "devDependencies": {
