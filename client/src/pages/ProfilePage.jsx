@@ -1,12 +1,13 @@
 import ChangePasswordForm from "../forms/ChangePasswordForm";
 import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
+import Card from "../components/Card";
 const ProfilePage = () => {
   const { userInfo } = useContext(UserContext);
   return (
     <div className="container">
       <div className="row justify-content-center py-3">
-        <div className="col col-12 col-sm-6 col-md-4 bg-white rounded p-3 bg-opacity-75 shadow">
+        <Card className="col col-12 col-sm-6 col-md-4">
           <h1>Profile</h1>
           <p className="lead">Hi there, {userInfo.username}! </p>
           <p>
@@ -14,7 +15,7 @@ const ProfilePage = () => {
             update your password on this page.
           </p>
           <ChangePasswordForm />
-        </div>
+        </Card>
       </div>
     </div>
   );

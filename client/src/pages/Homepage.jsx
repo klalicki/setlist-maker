@@ -1,5 +1,6 @@
 import LoginForm from "../forms/LoginForm";
 import { Link } from "react-router-dom";
+import Card from "../components/Card";
 const Homepage = () => {
   return (
     <div className="container-fluid">
@@ -36,12 +37,12 @@ const Homepage = () => {
               <li>...and much more!</li>
             </ul>
           </div>
-          <div className="col-12 col-md-6 col-lg-4 p-3 gap-2 bg-white rounded bg-opacity-75 shadow">
+          <Card className="col-12 col-md-6 col-lg-4 p-3 gap-2 bg-white">
             <LoginForm />
             <p className="mb-0">
               Not a user yet? Sign up <Link to="/register">here.</Link>
             </p>
-          </div>
+          </Card>
         </div>
       </div>
     </div>

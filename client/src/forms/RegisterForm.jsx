@@ -38,7 +38,7 @@ const RegisterForm = () => {
 
   return (
     <form className="" onSubmit={submitHandler}>
-      <h2>Register</h2>
+      <p>Make an account to try out all of the app's features!</p>
       <div className="mb-3">
         <label htmlFor="register-email" className="form-label">
           email address:
