@@ -1,4 +1,9 @@
+import ChangePasswordForm from "../forms/ChangePasswordForm";
 const ProfilePage = () => {
-  return <div>PROFILE</div>;
+  return (
+    <div>
+      <ChangePasswordForm />
+    </div>
+  );
 };
 export default ProfilePage;
