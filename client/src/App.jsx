@@ -1,3 +1,5 @@
+import { UserContextProvider } from "./context/UserContext";
+
 import NavBar from "./components/NavBar";
 import LoginForm from "./forms/LoginForm";
 import RegisterPage from "./pages/RegisterPage";
@@ -6,7 +8,7 @@ import SetlistEditor from "./pages/SetlistEditor";
 import AuthSwitcher from "./components/AuthSwitcher";
 import Homepage from "./pages/Homepage";
 import AppHomepage from "./pages/AppHomepage";
-import { UserContextProvider } from "./context/UserContext";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./components/PrivateRoutes";
 function App() {
