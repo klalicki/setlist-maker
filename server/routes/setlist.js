@@ -33,7 +33,7 @@ router.put("/:setlistID", async (req, res) => {
     // use the model
     const updatedSetlist = await Setlist.updateSetlist(
       req.params.setlistID,
-      req.body.updatedSetlist
+      req.body
     );
     res.send(updatedSetlist);
   } catch (error) {

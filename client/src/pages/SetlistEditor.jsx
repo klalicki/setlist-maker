@@ -3,17 +3,16 @@ import { UserContext } from "../context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import { fetchData } from "../apiHelpers";
 import Card from "../components/Card";
-import { set } from "mongoose";
 const SetlistEditor = () => {
   const { setlistID } = useParams();
   const apiURL = `setlist/${setlistID}`;
-  const [setlistData, setSetlistData] = useState([]);
+  const [setlistData, setSetlistData] = useState({});
   const fetchSetlistItems = async () => {
     try {
       const listData = await fetchData(apiURL, {}, "get");
-      const { title, date, published, notes } = listData;
+      const { title, published, notes } = listData;
 
-      setSetlistData({ title, date, published, notes });
+      setSetlistData({ title, published, notes });
       console.log(listData);
     } catch (error) {
       console.log("fetch error: " + JSON.stringify(error));
@@ -27,14 +26,24 @@ const SetlistEditor = () => {
     console.log(e.target.value);
     console.log(e.target.id);
     const keyToChange = e.target.id;
-    const newValue = e.target.value;
+    const newValue =
+      e.target.id === "published" ? !setlistData.published : e.target.value;
     setSetlistData({ ...setlistData, [keyToChange]: newValue });
+  };
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    console.log(e);
+    try {
+      const updatedSetlist = await fetchData(apiURL, setlistData, "put");
+      fetchSetlistItems();
+    } catch (error) {}
   };
 
   return (
     <Card>
       <code>{JSON.stringify(setlistData)}</code>
-      <form action="">
+      <form onSubmit={handleSubmitForm}>
         <h2>Edit Setlist Info</h2>
         <label htmlFor="title">Title</label>
         <input
@@ -44,6 +53,22 @@ const SetlistEditor = () => {
           onChange={handleFormChanges}
           value={setlistData.title}
         />
+        <label htmlFor="notes">Notes</label>
+        <input
+          type="text"
+          name="notes"
+          id="notes"
+          value={setlistData.notes}
+          onChange={handleFormChanges}
+        />
+        <input
+          type="checkbox"
+          onChange={handleFormChanges}
+          checked={setlistData.published}
+          name="published"
+          id="published"
+        />
+        <label htmlFor="published">Published</label>
         <button type="submit">Update</button>
       </form>
     </Card>
