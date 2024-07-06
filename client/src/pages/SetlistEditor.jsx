@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import { fetchData } from "../apiHelpers";
+import { useNavigate } from "react-router-dom";
+import DeleteButton from "../components/DeleteButton";
 import Card from "../components/Card";
 const SetlistEditor = () => {
+  const navigate = useNavigate();
   const { setlistID } = useParams();
   const apiURL = `setlist/${setlistID}`;
   const [setlistData, setSetlistData] = useState({});
@@ -40,11 +43,18 @@ const SetlistEditor = () => {
     } catch (error) {}
   };
 
+  const handleDelete = async () => {
+    try {
+      await fetchData(apiURL, {}, "delete");
+      navigate("/");
+    } catch {}
+  };
   return (
     <Card>
       <code>{JSON.stringify(setlistData)}</code>
       <form onSubmit={handleSubmitForm}>
         <h2>Edit Setlist Info</h2>
+        <DeleteButton onClick={handleDelete} />
         <label htmlFor="title">Title</label>
         <input
           type="text"
