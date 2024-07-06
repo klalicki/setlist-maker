@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../context2/UserContext";
 import { useContext, useState } from "react";
 
 const LoginForm = () => {
@@ -29,10 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form
-      className=""
-      onSubmit={handleSubmit}
-    >
+    <form className="" onSubmit={handleSubmit}>
       <h2>Login</h2>
       <div className="mb-3">
         <label htmlFor="login-username" className="form-label">

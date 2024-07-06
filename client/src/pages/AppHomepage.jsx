@@ -1,4 +1,4 @@
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../context2/UserContext";
 import { useContext } from "react";
 import Card from "../components/Card";
 import SetlistList from "../components/SetlistList";
@@ -14,7 +14,7 @@ const AppHomepage = () => {
         <div className="col col-12 col-lg-6">
           <Card>
             <h2>Setlists</h2>
-            <SetlistList/>
+            <SetlistList />
           </Card>
         </div>
         <div className="col col-12 col-lg-6">
