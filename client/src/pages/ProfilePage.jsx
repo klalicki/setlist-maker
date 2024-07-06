@@ -1,5 +1,5 @@
 import ChangePasswordForm from "../forms/ChangePasswordForm";
-import { UserContext } from "../context2/UserContext";
+import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 import Card from "../components/Card";
 const ProfilePage = () => {

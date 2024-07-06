@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { UserContext } from "../context2/UserContext";
+import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 const PrivateRoutes = () => {
   const { isAuthenticated } = useContext(UserContext);

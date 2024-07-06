@@ -1,4 +1,4 @@
-import { UserContext } from "../context2/UserContext";
+import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 // this is a higher order component that can switch between displaying two different components depending on whether the user is logged in or not
 const AuthSwitcher = ({ loggedIn, loggedOut }) => {

@@ -1,4 +1,4 @@
-import { UserContext } from "../context2/UserContext";
+import { UserContext } from "../context/userContext";
 import { fetchData } from "../apiHelpers";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";

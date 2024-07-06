@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { UserContext } from "../context2/UserContext";
+import { UserContext } from "../context/userContext";
 import { fetchData } from "../apiHelpers";
 
 const ChangePasswordForm = () => {
