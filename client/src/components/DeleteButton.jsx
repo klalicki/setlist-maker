@@ -21,7 +21,7 @@ const DeleteButton = ({
   };
 
   return (
-    <>
+    <div>
       <button
         className={`btn ${isArmed ? "btn-danger" : "btn-outline-danger"}`}
         onClick={handleClick}
@@ -33,7 +33,7 @@ const DeleteButton = ({
           cancel
         </button>
       )}
-    </>
+    </div>
   );
 };
 export default DeleteButton;
