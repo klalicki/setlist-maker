@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "../apiHelpers";
 import { useNavigate } from "react-router-dom";
 import DeleteButton from "../components/DeleteButton";
