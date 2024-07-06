@@ -25,7 +25,7 @@ const createSetlist = async (setlistInfo) => {
 
 const getSetlist = async (setlistID) => {
   const setlist = await Setlist.findById(setlistID);
-  return setlist.toObject();
+  return setlist;
 };
 
 const getSetlistsByUser = async (userID) => {

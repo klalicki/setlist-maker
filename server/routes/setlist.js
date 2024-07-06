@@ -18,9 +18,10 @@ router.post("/", async (req, res) => {
 router.get("/:setlistID", async (req, res) => {
   try {
     // use the model
-    const Setlist = await Setlist.getSetlist(req.params.setlistID);
-    res.send(Setlist);
+    const setlist = await Setlist.getSetlist(req.params.setlistID);
+    res.send(setlist);
   } catch (error) {
+    console.log(error);
     // send an error:
     res.status(500).send({ message: error });
   }
