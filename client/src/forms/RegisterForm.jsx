@@ -1,11 +1,13 @@
 import { fetchData } from "../apiHelpers";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { login } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const clearMessages = () => {
     setErrorMsg("");
@@ -27,8 +29,11 @@ const RegisterForm = () => {
         },
         "post"
       );
-      setSuccessMsg("Successfully registered!");
+      setSuccessMsg("Successfully registered! Now logging in...");
       login(formData.username, formData.password);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
       console.log(result);
     } catch (error) {
       setErrorMsg(error.message);
