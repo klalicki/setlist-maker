@@ -2,6 +2,8 @@
 const express = require("express");
 const User = require("../models/user");
 
+const Setlist = require("../models/setlist");
+
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
@@ -21,6 +23,16 @@ router.post("/", async (req, res) => {
       req.body.email
     );
     res.send({ ...newUser.toObject(), password: undefined });
+  } catch (error) {
+    res.status(401).send({ message: error.message });
+  }
+});
+
+router.get("/:userID/setlists", async (req, res) => {
+  try {
+    const setlists = await Setlist.getSetlistsByUser(req.params.userID);
+    res.send(setlists);
+    console.log(setlists);
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
