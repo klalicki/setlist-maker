@@ -1,4 +1,4 @@
-// import { UserContextProvider } from "./context/UserContext";
+import { UserContextProvider } from "./context/UserContext";
 
 import NavBar from "./components/NavBar";
 import LoginForm from "./forms/LoginForm";
