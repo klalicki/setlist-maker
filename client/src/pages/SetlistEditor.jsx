@@ -53,67 +53,65 @@ const SetlistEditor = () => {
   };
   return (
     <div className="container">
-      <Card><div className="row">
-        <div className="col col-12 col-md-6">
-          
-        <form onSubmit={handleSubmitForm}>
-          <h1>{setlistData.title}</h1>
+      <Card>
+        <div className="row">
+          <div className="col col-12 col-md-6">
+            <form onSubmit={handleSubmitForm}>
+              <h1>{setlistData.title}</h1>
 
-          <div className="mb-2">
-            <label htmlFor="title" className="form-label">
-              Title
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              id="title"
-              name="title"
-              onChange={handleFormChanges}
-              value={setlistData.title}
-            />
+              <div className="mb-2">
+                <label htmlFor="title" className="form-label">
+                  Title
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="title"
+                  name="title"
+                  onChange={handleFormChanges}
+                  value={setlistData.title}
+                />
+              </div>
+              <div className="mb-3">
+                {" "}
+                <label htmlFor="notes" className="form-label">
+                  Notes
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="notes"
+                  id="notes"
+                  value={setlistData.notes}
+                  onChange={handleFormChanges}
+                />{" "}
+              </div>
+              <div className="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  onChange={handleFormChanges}
+                  checked={setlistData.published}
+                  name="published"
+                  id="published"
+                />
+                <label htmlFor="published" className="form-check-label">
+                  Published
+                </label>
+              </div>
+              <div className="d-flex justify-content-between">
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={!isUpdated}
+                >
+                  Save
+                </button>{" "}
+                <DeleteButton onClick={handleDelete} />
+              </div>
+            </form>
           </div>
-          <div className="mb-3">
-            {" "}
-            <label htmlFor="notes" className="form-label">
-              Notes
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="notes"
-              id="notes"
-              value={setlistData.notes}
-              onChange={handleFormChanges}
-            />{" "}
-          </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              onChange={handleFormChanges}
-              checked={setlistData.published}
-              name="published"
-              id="published"
-            />
-            <label htmlFor="published" className="form-check-label">
-              Published
-            </label>
-          </div>
-          <div className="d-flex justify-content-between">
-            <button
-              className="btn btn-primary"
-              type="submit"
-              disabled={!isUpdated}
-            >
-              Save
-            </button>{" "}
-            <DeleteButton onClick={handleDelete} />
-          </div>
-        </form>
-      
         </div>
-        <div className="vr"></div>
-      </div>
       </Card>
     </div>
   );

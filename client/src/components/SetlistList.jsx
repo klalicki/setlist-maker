@@ -23,20 +23,36 @@ const SetlistList = () => {
     fetchSetlistItems();
   }, [apiURL]);
 
-  const createSetlist = async () => {
+  const createSetlist = async (e) => {
+    e.preventDefault();
     const newSetlist = await fetchData("setlist", { author: userID }, "post");
     navigate(`/setlist/${newSetlist._id}`);
   };
 
   return (
     <div>
-      {listItems.map((item) => {
-        return (
-          <div>
-            <Link to={`/setlist/${item._id}`}>{item.title || "Untitled"}</Link>
-          </div>
-        );
-      })}
+      {listItems.length === 0 && (
+        <p>
+          No setlists created yet!{" "}
+          <button className="unstyled-btn btn-link" onClick={createSetlist}>
+            Create your first one.
+          </button>{" "}
+        </p>
+      )}
+      <div className="list-group mb-3">
+        {listItems.map((item) => {
+          return (
+            <div>
+              <Link
+                className="list-group-item list-group-item-action"
+                to={`/setlist/${item._id}`}
+              >
+                {item.title || "Untitled"}
+              </Link>
+            </div>
+          );
+        })}
+      </div>{" "}
       <button className="btn btn-primary" onClick={createSetlist}>
         Create Setlist
       </button>
